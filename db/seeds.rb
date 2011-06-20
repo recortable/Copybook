@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# encoding: utf-8
+
+bucolicas = Publisher.create!(:slug => 'bucolicas', :name => 'Las Bucólicas, Ediciones', :email => 'ediciones@bucolicas.cc',
+                             :header_url => '/header.jpg')
+
+elsur = Publication.create!(:publisher => bucolicas, :name => 'El sur, instrucciones de uso', :art_rl => '/elsur_portada.jpg')
