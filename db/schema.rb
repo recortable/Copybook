@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110621153622) do
+ActiveRecord::Schema.define(:version => 20110621165939) do
+
+  create_table "downloads", :force => true do |t|
+    t.integer  "publisher_id"
+    t.integer  "publication_id"
+    t.string   "format",         :limit => 32
+    t.string   "file"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "licenses", :force => true do |t|
     t.string   "name",       :limit => 300
@@ -55,8 +65,7 @@ ActiveRecord::Schema.define(:version => 20110621153622) do
     t.string   "name",                 :limit => 300
     t.string   "email",                :limit => 300
     t.string   "slug",                 :limit => 50
-    t.string   "header"
-    t.string   "header_url"
+    t.text     "description"
     t.string   "art"
     t.string   "art_url"
     t.string   "color_body",           :limit => 10

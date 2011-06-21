@@ -5,17 +5,26 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <style type="text/css">
+    html {
+        background-color: <%= current_publisher.color_background %>;
+        color: <%= current_publisher.color_text %>;
+    }
+    #page {background-color: <%= current_publisher.color_body %>;}
+    a {color: <%= current_publisher.color_links %>;}
+  </style>
 </head>
 <body>
 
 <div id="page">
-  <% if current_user? %>
+  <% if current_user? and can?(:manage, current_publisher) %>
       <div class="session">
-        <%= current_user.name %>
-        <%= link_to 'Editar perfil', [:edit, current_publisher] if can? :edit, current_publisher %>
+        <%= current_user.name %> en <strong><%= current_publisher.name %></strong> &rArr;
+        <%= link_to 'Perfil', [:edit, current_publisher] %> /
+        <%= link_to 'Nueva publicación', new_publication_path %>
       </div>
   <% end %>
-  <%= image_art(nil, :width => 975, :class => 'custom-header') %>
+  <%= image_art(current_publisher, :width => 975, :class => 'custom-header') %>
   <div class="content">
     <%= yield %>
   </div>

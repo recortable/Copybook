@@ -1,8 +1,12 @@
 <% title publication.name %>
 <%= div_for publication, :class => 'publication container' do %>
     <div class="main">
-      <%= link_to '&darr;editar'.html_safe, edit_publication_path(publication) if can? :edit, publication %>
-      <h1><%= publication.name %> <%= link_to '&dArr;'.html_safe %></h1>
+      <div class="actions">
+        <%= link_to '&darr;editar'.html_safe, edit_publication_path(publication) if can? :edit, publication %>
+      </div>
+      <h1><%= publication.name %>
+        <%= link_to '&dArr;'.html_safe %>
+      </h1>
       <h4>Por <%= publication.publisher.name %></h4>
 
 
@@ -17,7 +21,14 @@
       </ul>
     </div>
     <div class="pubart">
-      &nbsp;art
+      <% if publication.art? %>
+          <%= image_art publication %>
+      <% else %>
+          <div class="missing-art">
+            <p>No se ha subido ninguna imágen</p>
+
+          </div>
+      <% end %>
     </div>
     <div class="publications">
       Publicaciones

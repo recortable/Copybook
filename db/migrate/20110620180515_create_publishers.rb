@@ -6,8 +6,7 @@ class CreatePublishers < ActiveRecord::Migration
       t.string :name, :limit => 300
       t.string :email, :limit => 300
       t.string :slug, :limit => 50
-      t.string :header
-      t.string :header_url
+      t.text :description
 
       t.string :art
       t.string :art_url

@@ -1,6 +1,8 @@
 
-<% simple_form_for publication, :url => publication_path(publication) do |form| %>
+<%= simple_form_for publication do |form| %>
     <%= form.input :slug %>
     <%= form.input :name %>
+    <%= form.input :description %>
+    <%= form.input :art %>
     <%= form.submit %>
 <% end %>

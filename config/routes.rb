@@ -2,6 +2,7 @@ Copybook::Application.routes.draw do
 
   resources :publishers , :path => 'editores'
   resources :publications, :path => 'publicaciones'
+  resources :books, :path => 'libros'
   resources :licenses, :path => 'licencias'
 
   match "/auth/:provider/callback" => "sessions#create"

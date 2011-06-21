@@ -7,3 +7,15 @@
     width: $s-width; margin: 0 auto;
 }
 
+#page .content {padding: 20px;}
+
+
+.session {
+    background-color: $c-gray;
+    padding: 2px 10px;
+
+    color: white;
+
+    a {color: white;}
+}
+

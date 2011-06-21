@@ -5,15 +5,16 @@
 $s-list: 200px;
 
 div.publication {
-
     div.main {
         float: left;
-        width: ($s-width - $s-list) / 2;
+        width: ($s-width - $s-list - 40) / 2 - 10;
+        margin-right: 10px;
     }
 
     div.pubart {
         float: left;
-        width: ($s-width - $s-list) / 2;
+        width: ($s-width - $s-list - 40) / 2 - 10;
+        margin-right: 10px;
     }
 
     div.publications {
@@ -24,4 +25,9 @@ div.publication {
 
 div.publication {
     ul.children {margin-top: 20px;}
+
+    .missing-art {
+        background-color: $c-graylt;
+    }
+
 }

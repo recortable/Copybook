@@ -11,7 +11,9 @@ module ApplicationHelper
     style  <<  "width: #{width}px;" if width
     style  <<  "height: #{height}px;" if height
     options[:style] = style
-    url = publication ? publication.art_url : '/white.png'
+    url = '/white.png'
+    url = publication.art_url if publication.art_url.present?
+    url = publication.art.url  if publication.art?
     content_tag(:div, image_tag(url), options)
   end
 

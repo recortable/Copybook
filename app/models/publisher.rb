@@ -6,5 +6,7 @@ class Publisher < ActiveRecord::Base
   validates :name, :presence => true
   validates :email, :presence => true
 
+  mount_uploader :art, ArtUploader
+
   # 975 pixels wide, 40-180 pixels tall, .jpg, .gif or .png, 2mb max
 end
