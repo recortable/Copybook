@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'cancan'
 gem 'ancestry'
 gem 'decent_exposure'
+gem 'acts_as_list'
 gem "simple_form"
 gem 'rdiscount', :require => 'rdiscount'
 gem 'css3buttons'

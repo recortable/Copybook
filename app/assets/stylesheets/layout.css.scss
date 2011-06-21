@@ -1,6 +1,9 @@
 
 @import "variables.css.scss";
 
+.container {width: 100%; overflow: hidden;}
+
 #page {
     width: $s-width; margin: 0 auto;
 }
+

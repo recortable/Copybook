@@ -3,7 +3,7 @@
 <ul>
   <% publisher.publications.each do |publication| %>
   <li>
-    <%= link_to publication.name, publication %>
+    <%= link_to publication.name, publication_path(publication) %>
   </li>
   <% end %>
 </ul>

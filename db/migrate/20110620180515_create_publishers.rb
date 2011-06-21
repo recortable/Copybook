@@ -1,12 +1,16 @@
 class CreatePublishers < ActiveRecord::Migration
   def change
     create_table :publishers do |t|
+      t.belongs_to :license
+
       t.string :name, :limit => 300
       t.string :email, :limit => 300
       t.string :slug, :limit => 50
       t.string :header
       t.string :header_url
-      t.belongs_to :license
+
+      t.string :art
+      t.string :art_url
 
       t.string :color_body, :limit => 10
       t.string :color_text, :limit => 10

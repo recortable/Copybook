@@ -2,20 +2,23 @@
 <html>
 <head>
   <title>Copybook</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div id="page">
-  <div class="session">
-    <%= link_to publisher.name, publisher %>
-  </div>
-  <div class="custom_header"></div>
+  <% if current_user? %>
+      <div class="session">
+        <%= current_user.name %>
+        <%= link_to 'Editar perfil', [:edit, current_publisher] if can? :edit, current_publisher %>
+      </div>
+  <% end %>
+  <%= image_art(nil, :width => 975, :class => 'custom-header') %>
   <div class="content">
-  <%= yield %>
-    </div>
+    <%= yield %>
+  </div>
 </div>
 
 </body>

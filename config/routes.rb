@@ -1,7 +1,12 @@
 Copybook::Application.routes.draw do
-  root :to => 'publishers#show'
 
-  resources :publishers
-  resources :publications
-  resources :licenses
+  resources :publishers , :path => 'editores'
+  resources :publications, :path => 'publicaciones'
+  resources :licenses, :path => 'licencias'
+
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/entrar" => "sessions#new", :as => :login
+  match "/salir" => "sessions#destroy", :as => :logout
+  match "/enter/:id" => "sessions#enter", :as => :enter
+  root :to => 'publications#welcome'
 end

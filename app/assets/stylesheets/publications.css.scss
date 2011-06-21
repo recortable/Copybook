@@ -1,7 +1,27 @@
-// Place all the styles related to the publications controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-body.publications {
-  // Place scoped styles here
+
+@import "variables.css.scss";
+
+$s-list: 200px;
+
+div.publication {
+
+    div.main {
+        float: left;
+        width: ($s-width - $s-list) / 2;
+    }
+
+    div.pubart {
+        float: left;
+        width: ($s-width - $s-list) / 2;
+    }
+
+    div.publications {
+        float: left;  width: $s-list;
+        border-top: 1px solid $c-gray;
+    }
+}
+
+div.publication {
+    ul.children {margin-top: 20px;}
 }

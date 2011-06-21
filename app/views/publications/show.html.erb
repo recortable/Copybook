@@ -1,0 +1,31 @@
+<% title publication.name %>
+<%= div_for publication, :class => 'publication container' do %>
+    <div class="main">
+      <%= link_to '&darr;editar'.html_safe, edit_publication_path(publication) if can? :edit, publication %>
+      <h1><%= publication.name %> <%= link_to '&dArr;'.html_safe %></h1>
+      <h4>Por <%= publication.publisher.name %></h4>
+
+
+      <ul class="children">
+        <% publication.children.each do |child| %>
+            <li>
+              <%= child.position %>.
+              <%= child.name %>
+              <%= link_to '&dArr;'.html_safe %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="pubart">
+      &nbsp;art
+    </div>
+    <div class="publications">
+      Publicaciones
+
+      <ul>
+        <% current_publisher.publications.root.each do |publication| %>
+            <li><%= publication.name %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
