@@ -15,7 +15,7 @@ class PublishersController < ApplicationController
   def update
     authorize! :update, publisher
     flash[:notice] = 'Editorial actualizada.' if publisher.update_attributes(params[:publisher])
-    respond_with publisher
+    respond_with publisher, :location => root_path
   end
 
 end

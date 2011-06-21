@@ -2,7 +2,7 @@
 
 @import "variables.css.scss";
 
-$s-list: 200px;
+$s-list: 100px;
 
 div.publication {
     div.main {
@@ -15,6 +15,7 @@ div.publication {
         float: left;
         width: ($s-width - $s-list - 40) / 2 - 10;
         margin-right: 10px;
+        overflow: hidden;
     }
 
     div.publications {
@@ -30,4 +31,11 @@ div.publication {
         background-color: $c-graylt;
     }
 
+    div.pubart {
+        img {width: 100%;}
+    }
+
+    div.license {margin-top: 20px; font-size: 80%;}
 }
+
+.art img {width: 100%;}

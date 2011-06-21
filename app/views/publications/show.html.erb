@@ -19,7 +19,12 @@
             </li>
         <% end %>
       </ul>
+
+      <div class="license">
+        <%= image_tag(publication.license.icon) %>
+      </div>
     </div>
+
     <div class="pubart">
       <% if publication.art? %>
           <%= image_art publication %>
@@ -34,8 +39,11 @@
       Publicaciones
 
       <ul>
-        <% current_publisher.publications.root.each do |publication| %>
-            <li><%= publication.name %></li>
+        <% current_publisher.publications.root.each do |child| %>
+            <li>
+              <%= image_art child %>
+              <%= link_to child.name, publication_path(child) %>
+            </li>
         <% end %>
       </ul>
     </div>

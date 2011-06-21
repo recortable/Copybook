@@ -4,10 +4,10 @@ module ApplicationHelper
   end
 
   def image_art(publication, options = {})
-    options.merge({:class => 'art'})
+    options.merge!({:class => 'art'})
     width = options.delete(:width)
     height = options.delete(:height)
-    style = ''
+    style = ';'
     style  <<  "width: #{width}px;" if width
     style  <<  "height: #{height}px;" if height
     options[:style] = style

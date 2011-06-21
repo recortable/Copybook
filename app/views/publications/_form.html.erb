@@ -2,6 +2,7 @@
 <%= simple_form_for publication do |form| %>
     <%= form.input :slug %>
     <%= form.input :name %>
+    <%= form.association :license , :include_blank => false %>
     <%= form.input :description %>
     <%= form.input :art %>
     <%= form.submit %>
