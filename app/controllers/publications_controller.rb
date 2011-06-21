@@ -4,7 +4,8 @@ class PublicationsController < ApplicationController
   expose(:publication)
 
   def welcome
-    render 'index'
+    params[:id] = current_publisher.publications.root.last.id
+    render 'show'
   end
 
   def index
