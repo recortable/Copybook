@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Copybook</title>
+  <title><%= yield :title %> :: <%= current_publisher.name %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <style type="text/css">
     html {
+        background: url('/BAAB_logo_small.jpg') repeat;
         background-color: <%= current_publisher.color_background %>;
         color: <%= current_publisher.color_text %>;
     }
