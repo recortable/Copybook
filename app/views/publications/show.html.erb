@@ -20,6 +20,7 @@
                     :class => 'action' if can? :manage, publication %>
         <% publication.downloads.each do |download| %>
             <li><%= link_to "&dArr; Descarga gratuita en #{download.format}".html_safe, download.file.url %>
+              <%= number_to_human_size download.file_size %>
             <%= link_to '&larr; eliminar descarga'.html_safe, [publication, download], :method => :delete,
                 :confirm => '¿Segura que quieres borrar esa descarga?', :class => 'action' if can? :destroy, download%>
             </li>
