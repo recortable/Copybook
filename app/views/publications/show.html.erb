@@ -1,13 +1,18 @@
 <% title publication.name %>
 <%= div_for publication, :class => 'publication container' do %>
     <div class="main">
+      <div class="payment">
+        <%= embed_payment publication %>
+      </div>
       <div class="actions">
         <%= link_to '&darr;editar'.html_safe, edit_publication_path(publication) if can? :edit, publication %>
+        <%= link_to '&darr;añadir descarga'.html_safe, edit_publication_path(publication) if can? :manage, publication %>
       </div>
       <h1><%= publication.name %>
         <%= link_to '&dArr;'.html_safe %>
       </h1>
       <h4>Por <%= publication.publisher.name %></h4>
+
 
       <ul class="children">
         <% publication.children.each do |child| %>
@@ -27,6 +32,8 @@
       <div class="description">
         <%= markdown publication.description %>
       </div>
+
+
     </div>
 
 

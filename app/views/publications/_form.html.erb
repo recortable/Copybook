@@ -5,5 +5,7 @@
     <%= form.association :license , :include_blank => false %>
     <%= form.input :description %>
     <%= form.input :art %>
+    <%= form.input :payment_method, :collection => ['tinypay.me'], :include_blank => false %>
+    <%= form.input :payment_code %>
     <%= form.submit %>
 <% end %>

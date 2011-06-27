@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110621165939) do
+ActiveRecord::Schema.define(:version => 20110627150119) do
 
   create_table "downloads", :force => true do |t|
     t.integer  "publisher_id"
@@ -42,19 +42,21 @@ ActiveRecord::Schema.define(:version => 20110621165939) do
   create_table "publications", :force => true do |t|
     t.integer  "publisher_id"
     t.integer  "parent_id"
-    t.string   "slug",         :limit => 100
-    t.string   "type",         :limit => 48
-    t.string   "name",         :limit => 300
-    t.string   "author",       :limit => 300
+    t.string   "slug",           :limit => 100
+    t.string   "type",           :limit => 48
+    t.string   "name",           :limit => 300
+    t.string   "author",         :limit => 300
     t.string   "art"
     t.string   "art_url"
     t.text     "description"
     t.integer  "position"
     t.integer  "license_id"
-    t.boolean  "download",                    :default => true
-    t.boolean  "hide",                        :default => false
+    t.boolean  "download",                      :default => true
+    t.boolean  "hide",                          :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "payment_code",   :limit => 100
+    t.string   "payment_method", :limit => 32
   end
 
   add_index "publications", ["license_id"], :name => "index_publications_on_license_id"

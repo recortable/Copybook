@@ -35,8 +35,12 @@ div.publication {
         img {width: 100%;}
     }
 
+    div.payment {float: right;}
     div.license {margin-top: 20px; font-size: 80%;}
-    div.description {margin-top: 20px;}
+    div.description {
+        margin-top: 20px;
+        p {margin: 10px 0;}
+    }
 }
 
 .art img {width: 100%;}
