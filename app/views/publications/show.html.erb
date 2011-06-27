@@ -19,10 +19,16 @@
         <% end %>
       </ul>
 
+
       <div class="license">
         <%= image_tag(publication.license.icon) %>
       </div>
+
+      <div class="description">
+        <%= markdown publication.description %>
+      </div>
     </div>
+
 
     <div class="pubart">
       <% if publication.art? %>
