@@ -1,0 +1,5 @@
+<%= simple_form_for [publication, download] do |form| %>
+    <%= form.input :format, :collection => [:pdf, :epub], :include_blank => false %>
+    <%= form.input :file %>
+    <%= form.submit %>
+<% end %>

@@ -5,33 +5,42 @@
         <%= embed_payment publication %>
       </div>
       <div class="actions">
-        <%= link_to '&darr;editar'.html_safe, edit_publication_path(publication) if can? :edit, publication %>
-        <%= link_to '&darr;añadir descarga'.html_safe, edit_publication_path(publication) if can? :manage, publication %>
+        <%= link_to '&darr;editar'.html_safe, [:edit, publication], :class => 'action' if can? :edit, publication %>
       </div>
       <h1><%= publication.name %>
-        <%= link_to '&dArr;'.html_safe %>
+        <%#= link_to '&dArr;'.html_safe %>
       </h1>
       <h4>Por <%= publication.publisher.name %></h4>
 
+      <div class="description">
+        <%= markdown publication.description %>
+      </div>
+      <ul class="downloads">
+        <%= link_to '&uarr;añadir descarga'.html_safe, [:new, publication, :download],
+                    :class => 'action' if can? :manage, publication %>
+        <% publication.downloads.each do |download| %>
+            <li><%= link_to "&dArr; Descarga gratuita en #{download.format}".html_safe, download.file.url %>
+            <%= link_to '&larr; eliminar descarga'.html_safe, [publication, download], :method => :delete,
+                :confirm => '¿Segura que quieres borrar esa descarga?', :class => 'action' if can? :destroy, download%>
+            </li>
+            <% end %>
+      </ul>
+      <div class="license">
+        <%= image_tag(publication.license.icon) %>
+      </div>
 
       <ul class="children">
         <% publication.children.each do |child| %>
             <li>
               <%= child.position %>.
               <%= child.name %>
-              <%= link_to '&dArr;'.html_safe %>
+              <%#= link_to '&dArr;'.html_safe %>
             </li>
         <% end %>
       </ul>
 
 
-      <div class="license">
-        <%= image_tag(publication.license.icon) %>
-      </div>
 
-      <div class="description">
-        <%= markdown publication.description %>
-      </div>
 
 
     </div>
@@ -54,7 +63,7 @@
         <% current_publisher.publications.root.each do |child| %>
             <li>
               <%= image_art child %>
-              <%= link_to child.name, publication_path(child) %>
+              <%= link_to child.name, child %>
             </li>
         <% end %>
       </ul>
