@@ -17,6 +17,9 @@ ActiveRecord::Schema.define(:version => 20110621165939) do
     t.integer  "publication_id"
     t.string   "name",           :limit => 100
     t.string   "format",         :limit => 32
+    t.float    "price",                         :default => 0.0
+    t.string   "currency",       :limit => 10
+    t.string   "url",            :limit => 300
     t.string   "file"
     t.integer  "file_size"
     t.string   "content_type"

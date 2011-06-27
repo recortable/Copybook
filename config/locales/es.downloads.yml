@@ -1,1 +1,20 @@
 es:
+  download:
+    currency:
+      euros: '€'
+
+  simple_form:
+    labels:
+      download:
+        name: 'Nombre'
+        price: 'Precio'
+        currency: 'Moneda'
+        url: 'Enlace de descaga'
+        file: 'Fichero descargable'
+        format: 'Formato del fichero descargable'
+    hints:
+      download:
+        name: 'Puede estar en blanco'
+        price: 'Déjalo a cero para que sea una descarga gratuita'
+        url: '(opcional) Si se especifica, abrirá este enlace cada vez que pulsen en esta descarga'
+        file: "Se descargará sólo si no has indicado un 'enlace de descarga'"

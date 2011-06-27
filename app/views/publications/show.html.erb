@@ -1,9 +1,6 @@
 <% title publication.name %>
 <%= div_for publication, :class => 'publication container' do %>
     <div class="main">
-      <div class="payment">
-        <%= embed_payment publication %>
-      </div>
       <div class="actions">
         <%= link_to '&darr;editar'.html_safe, [:edit, publication], :class => 'action' if can? :edit, publication %>
       </div>
@@ -13,23 +10,17 @@
         <%#= link_to '&dArr;'.html_safe %>
       </h1>
       <% if publication.parent_id? %>
-      <h3>De <%= link_to publication.parent.name, publication.parent %></h3>
-          <% end %>
+          <h3>De <%= link_to publication.parent.name, publication.parent %></h3>
+      <% end %>
       <h4>Por <%= link_to publication.publisher.name, root_path %></h4>
 
       <div class="description">
         <%= markdown publication.description %>
       </div>
       <ul class="downloads">
-        <%= link_to '&uarr;añadir descarga'.html_safe, [:new, publication, :download],
+        <%= link_to '&darr;añadir descarga'.html_safe, [:new, publication, :download],
                     :class => 'action' if can? :manage, publication %>
-        <% publication.downloads.each do |download| %>
-            <li><%= link_to "&dArr; Descarga gratuita en #{download.format}".html_safe, download.file.url %>
-              <%= number_to_human_size download.file_size %>
-            <%= link_to '&larr; eliminar descarga'.html_safe, [publication, download], :method => :delete,
-                :confirm => '¿Segura que quieres borrar esa descarga?', :class => 'action' if can? :destroy, download%>
-            </li>
-            <% end %>
+        <%= render :partial => 'download', :collection => publication.downloads %>
       </ul>
       <div class="license">
         <%= image_tag(publication.a_license.icon) if publication.a_license %>
@@ -46,14 +37,11 @@
       </ul>
 
 
-
-
-
     </div>
 
 
     <div class="pubart">
-          <%= image_art publication.art_url %>
+      <%= image_art publication.art_url %>
     </div>
     <div class="publications">
       Publicaciones

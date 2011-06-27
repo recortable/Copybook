@@ -9,9 +9,30 @@ class Download < ActiveRecord::Base
   validates :publisher_id, :presence => true
   validates :format, :presence => true
 
+  def download_link
+    if self.url?
+      self.url
+    elsif self.file?
+      self.file.url
+    else
+      '#'
+    end
+  end
+
+  def title
+    if self.name?
+      self.name
+    else
+      "Descarga"
+    end
+  end
+
+
   def update_download_attributes
-    self.content_type = file.file.content_type
-    self.file_size = file.file.size
+    if self.file.present?
+      self.content_type = file.file.content_type
+      self.file_size = file.file.size
+    end
   end
 
 end

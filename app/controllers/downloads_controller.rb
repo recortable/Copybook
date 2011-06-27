@@ -7,6 +7,9 @@ class DownloadsController < ApplicationController
   expose(:download)
 
   def new
+  end
+
+  def edit
 
   end
 

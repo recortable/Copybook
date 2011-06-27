@@ -1,1 +1,10 @@
 es:
+
+  simple_form:
+    labels:
+      slug: 'Alias'
+      name: 'Nombre'
+      description: 'Descripción'
+      license: 'Licencia'
+      art: 'Imágen'
+      book:

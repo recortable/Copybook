@@ -41,7 +41,9 @@ form {
     .hint {display: block; color: gray;}
     .error {display: block;color:#c00;}
 
-    input[type=text], input[type=password], input[type=email], textarea {
+    input[type=text], input[type=password],
+    input[type=url], input[type=number],
+    input[type=email], textarea {
         width: 100%;
         border: 1px solid $c-bg; padding: 2px 3px;
     }

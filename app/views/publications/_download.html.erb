@@ -1,0 +1,16 @@
+<li>&rArr;
+  <a href="<%= download.download_link %>" <%= 'target="_blank"' if download.url? %>>
+     <%= download.title %>
+  </a>
+  <% if download.price == 0 %>
+  Gratuíta
+  <% else %>
+  <%= download.price %><%= t "download.currency.#{download.currency}" %>
+  <% end %>
+  <% if can? :manage, download %>
+  &larr;
+      <%= link_to 'editar', [:edit, publication, download], :class => 'action' %> /
+      <%= link_to 'eliminar', [publication, download], :method => :delete,
+          :confirm => '¿Segura que quieres borrar esa descarga?', :class => 'action' %>
+      <% end %>
+</li>

@@ -1,5 +1,9 @@
 <%= simple_form_for [publication, download] do |form| %>
-    <%= form.input :format, :collection => [:pdf, :epub], :include_blank => false %>
+    <%= form.input :name %>
+    <%= form.input :price %>
+    <%= form.input :currency, :collection => [:euros], :include_blank => false %>
+    <%= form.input :url%>
     <%= form.input :file %>
+    <%= form.input :format, :collection => [:pdf, :epub], :include_blank => false %>
     <%= form.submit %>
 <% end %>
