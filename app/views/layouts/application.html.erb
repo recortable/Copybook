@@ -20,7 +20,8 @@
 <div id="page">
   <% if current_user? and can?(:manage, current_publisher) %>
       <div class="session">
-        <%= current_user.name %> en <strong><%= current_publisher.name %></strong> &rArr;
+        <%= current_user.name %> (<%= link_to 'Salir', logout_path %>)
+        en <strong><%= current_publisher.name %></strong> &rArr;
         <%= link_to 'Perfil', [:edit, current_publisher] %> /
         <%= link_to 'Nueva publicación', new_publication_path %>
       </div>
