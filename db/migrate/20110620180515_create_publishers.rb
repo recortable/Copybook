@@ -8,8 +8,8 @@ class CreatePublishers < ActiveRecord::Migration
       t.string :slug, :limit => 50
       t.text :description
 
-      t.string :art
-      t.string :art_url
+      t.string :banner_art
+      t.string :background_art
 
       t.string :color_body, :limit => 10
       t.string :color_text, :limit => 10

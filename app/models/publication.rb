@@ -7,15 +7,32 @@ class Publication < ActiveRecord::Base
 
   scope :root, where(:parent_id => nil)
 
-  acts_as_list :scope  => :parent_id
+  acts_as_list :scope => :parent_id
   mount_uploader :art, ArtUploader
 
-  validates :slug, :presence => true, :uniqueness => true
   validates :publisher_id, :presence => true
   validates :name, :presence => true
 
+  def a_license
+    if self.license.present?
+      self.license
+    elsif self.parent_id?
+      self.parent.a_license
+    end
+  end
+
+  def art_url
+    if self.art?
+      self.art.url
+    elsif self.parent_id?
+      self.parent.art_url
+    else
+      '/blank.gif'
+    end
+  end
+
   def to_param
-    slug.present? ? "#{slug}".parameterize : id
+    slug.present? ? "#{slug}".parameterize : id.to_s
   end
 
 end

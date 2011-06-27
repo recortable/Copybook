@@ -7,10 +7,15 @@
       <div class="actions">
         <%= link_to '&darr;editar'.html_safe, [:edit, publication], :class => 'action' if can? :edit, publication %>
       </div>
-      <h1><%= publication.name %>
+      <h1>
+        <%= "#{publication.position}. " if publication.parent_id? %>
+        <%= publication.name %>
         <%#= link_to '&dArr;'.html_safe %>
       </h1>
-      <h4>Por <%= publication.publisher.name %></h4>
+      <% if publication.parent_id? %>
+      <h3>De <%= link_to publication.parent.name, publication.parent %></h3>
+          <% end %>
+      <h4>Por <%= link_to publication.publisher.name, root_path %></h4>
 
       <div class="description">
         <%= markdown publication.description %>
@@ -27,14 +32,14 @@
             <% end %>
       </ul>
       <div class="license">
-        <%= image_tag(publication.license.icon) %>
+        <%= image_tag(publication.a_license.icon) if publication.a_license %>
       </div>
 
       <ul class="children">
         <% publication.children.each do |child| %>
             <li>
               <%= child.position %>.
-              <%= child.name %>
+              <%= link_to child.name, [publication, child] %>
               <%#= link_to '&dArr;'.html_safe %>
             </li>
         <% end %>
@@ -48,14 +53,7 @@
 
 
     <div class="pubart">
-      <% if publication.art? %>
-          <%= image_art publication %>
-      <% else %>
-          <div class="missing-art">
-            <p>No se ha subido ninguna imágen</p>
-
-          </div>
-      <% end %>
+          <%= image_art publication.art_url %>
     </div>
     <div class="publications">
       Publicaciones
@@ -63,7 +61,7 @@
       <ul>
         <% current_publisher.publications.root.each do |child| %>
             <li>
-              <%= image_art child %>
+              <%= image_art child.art_url %>
               <%= link_to child.name, child %>
             </li>
         <% end %>

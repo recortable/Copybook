@@ -5,12 +5,14 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
-    text.gsub!(/^\s*#/, '##')
-    Redcarpet.new(text, *options).to_html.html_safe
+    if text.present?
+      options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
+      text.gsub!(/^\s*#/, '##')
+      Redcarpet.new(text, *options).to_html.html_safe
+    end
   end
 
-  def image_art(publication, options = {})
+  def image_art(url, options = {})
     options.merge!({:class => 'art'})
     width = options.delete(:width)
     height = options.delete(:height)
@@ -18,9 +20,6 @@ module ApplicationHelper
     style << "width: #{width}px;" if width
     style << "height: #{height}px;" if height
     options[:style] = style
-    url = '/white.png'
-    url = publication.art_url if publication.art_url.present?
-    url = publication.art.url if publication.art?
     content_tag(:div, image_tag(url), options)
   end
 

@@ -25,7 +25,7 @@
         <%= link_to 'Nueva publicación', new_publication_path %>
       </div>
   <% end %>
-  <%= image_art(current_publisher, :width => 975, :class => 'custom-header') %>
+  <%= image_art(current_publisher.banner_art.url, :width => 975, :class => 'custom-header') %>
   <div class="content">
     <%= yield %>
   </div>

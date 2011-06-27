@@ -1,0 +1,15 @@
+es:
+
+  simple_form:
+    labels:
+      publisher:
+        slug: 'Alias'
+        name: 'Nombre'
+        email: 'Dirección de correo electrónico'
+        banner_art: 'Imágen de cabecera'
+        background_art: 'Imágen de fondo'
+        description: 'Descripción'
+        color_body: 'Color de fondo del centro'
+        color_text: 'Color del texto'
+        color_link: 'Color de los enlaces'
+        color_background: 'Color de fondo del exterior'

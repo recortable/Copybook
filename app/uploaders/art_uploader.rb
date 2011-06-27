@@ -8,7 +8,7 @@ class ArtUploader < CarrierWave::Uploader::Base
   storage :s3
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "art/#{model.class.to_s.underscore}_#{model.id}_#{mounted_as}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
