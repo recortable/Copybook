@@ -10,13 +10,24 @@ class DownloadsController < ApplicationController
   end
 
   def edit
+  end
 
+  def show
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
     authorize! :create, download
     download.publisher_id = current_publisher
     flash[:notice] = 'Fichero subido!' if download.save
+    respond_with download, :location => publication
+  end
+
+  def update
+    authorize! :update, download
+    flash[:notice] = 'Descarga actualizada' if download.update_attributes(params[:download])
     respond_with download, :location => publication
   end
 

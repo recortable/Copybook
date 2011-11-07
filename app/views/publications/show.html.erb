@@ -15,7 +15,7 @@
       <h4>Por <%= link_to publication.publisher.name, root_path %></h4>
 
       <div class="viewer">
-        <%= link_to image_tag('icons/play_big.png'), [publication, :pages] %>
+        <%#= link_to image_tag('icons/play_big.png'), [publication, :pages] %>
       </div>
 
       <div class="description">
@@ -30,16 +30,18 @@
         <%= image_tag(publication.a_license.icon) if publication.a_license %>
       </div>
 
+      <!--
       <ul class="children">
         <% publication.children.each do |child| %>
             <li>
-              <%= link_to image_tag('icons/play.png'), [publication, child, :pages] %>
-              <%= child.position %>.
-              <%= link_to child.name, [publication, child] %>
+              <%#= link_to image_tag('icons/play.png'), [publication, child, :pages] %>
+              <%#= child.position %>.
+              <%#= link_to child.name, [publication, child] %>
               <%#= link_to '&dArr;'.html_safe %>
             </li>
         <% end %>
       </ul>
+      -->
 
 
     </div>

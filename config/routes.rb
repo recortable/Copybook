@@ -15,6 +15,8 @@ Copybook::Application.routes.draw do
     resources :pages, :path => 'leer'
   end
 
+  resources :downloads, path: 'descargar', only: [:show]
+
   resources :licenses, :path => 'licencias'
 
   match "/auth/:provider/callback" => "sessions#create"
